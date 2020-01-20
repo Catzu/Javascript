@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>slider</title>
+        <style>
+            #slideholder1{
+                height: 450px;
+                width: 1350px;
+                border: 1px black solid;
+            }
+
+            #slideholder2{
+                height: 450px;
+                width: 1350px;
+                border: 1px black solid;
+            }
+            #slideholder3{
+                height: 450px;
+                width: 1350px;
+                border: 1px black solid;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="slideholder1"></div>
+        <div id="slideholder2"></div>
+        <div id="slideholder3"></div>
+        <script>
+            var plaatjes = [1,2,3];
+            var teller = 0;
+            var teller1 = 0;
+            var teller2 = 0;
+            d = document.getElementById("block1");
+            
+            var slideholder1 = document.getElementById("slideholder1");
+            slideholder1.style.backgroundImage = "url('img/top1.png')"
+            var slideholder2 = document.getElementById("slideholder2");
+            slideholder2.style.backgroundImage = "url('img/mid1.png')"
+            var slideholder3 = document.getElementById("slideholder3");
+            slideholder3.style.backgroundImage = "url('img/bot1.png')"
+        
+            slideholder1.addEventListener("click", function() {
+                slideholder1.style.backgroundImage = "url('img/top"+ getDuck() + ".png')"
+            });
+            slideholder2.addEventListener("click", function() {
+                slideholder2.style.backgroundImage = "url('img/mid"+ getDuck1() + ".png')"
+            });
+            slideholder3.addEventListener("click", function() {
+                slideholder3.style.backgroundImage = "url('img/bot"+ getDuck2() + ".png')"
+            });
+
+            function getDuck() {
+                if(teller >= plaatjes.length) {
+                    teller = 1;
+                } else {
+                    teller++;
+                }
+                console.log(teller);
+                return teller;
+            }
+
+            function getDuck1() {
+                if(teller1 >= plaatjes.length) {
+                    teller1 = 1;
+                } else {
+                    teller1++;
+                }
+                console.log(teller1);
+                return teller1;
+            }
+
+            function getDuck2() {
+                if(teller2 >= plaatjes.length) {
+                    teller2 = 1;
+                } else {
+                    teller2++;
+                }
+                console.log(teller2);
+                return teller2;
+            }
+
+            var d = document.getElementById("slideholder1");
+                d.style.position = "absolute";
+                d.style.left = 50+'px';
+                d.style.top = 50+'px';
+            var d = document.getElementById("slideholder2");
+                d.style.position = "absolute";
+                d.style.left = 50+'px';
+                d.style.top = 500+'px';
+            var d = document.getElementById("slideholder3");
+                d.style.position = "absolute";
+                d.style.left = 50+'px';
+                d.style.top = 950+'px';
+
+        </script>
+    </body>
+</html>

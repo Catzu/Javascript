@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charsets="UTF-8">
+        <title>Choose the best one!</title>
+        <style>
+            body {
+                text-align:center;
+            }
+            div.favorite {
+                width:300px;
+                height: 150px;
+                background-image: none;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            div.picture-holder {
+                box-sizing: border-box;
+                height: 450px;
+                width: 300px;
+                float:left;
+                background-color: purple;
+                border: solid 1px black;
+            }
+            div.favorite {
+                width: 300px;
+                height: 150px;
+                background-image:none;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            #pics {
+                width: 900px;
+                height: 1350px;
+                border:solid 1px black;
+                font-size: 0px;
+                margin:auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Ducky Chooser</h1>
+        <h3>Choose your favorite Duck!</h3>
+        <div id="pics">
+
+        </div>
+        <script>
+            pics = document.getElementById("pics");
+            createPicsHolders();
+            createDuckImages();
+            
+            function createPicsHolders() {
+                for(var i = 0; i < 9; i++) {
+                    pictureHolder = document.createElement("div");
+                    pictureHolder.className = "picture-holder";
+                    pictureHolder.id = "picture-holder-" +1;
+                    pics.appendChild(pictureHolder);
+                }
+            }
+
+            function createDuckImages() {
+                pictureHolders = document.getElementsByClassName("picture-holder");
+                for(var i = 0; i < pictureHolders.length; i++) {
+                    favorite = document.createElement("div");
+                    favorite.className = "favorite";
+                    favorite.id = "favorite_" + (i + 1);
+                    duckImage = document.createElement("img");
+                    duckImage.src="img/duck" + ( i + 1 ) + ".png";
+                    duckImage.id = (i + 1);
+                    duckImage.addEventListener("click", function() {
+                    makeFavorite(this.id);
+                    });
+                    pictureHolders[i].appendChild(favorite);
+                    pictureHolders[i].appendChild(duckImage);
+                }
+            }
+
+            function makeFavorite(id) {
+                console.log("make my favorite nigg nig niggg" + id);
+                notmyfavorite = document.getElementsByClassName("favorite");
+
+                for(var i = 0; i < notmyfavorite.length; i++) {
+                    notmyfavorite[i].style.backgroundImage = "none";
+                }
+
+                favorite = document.getElementById("favorite_" + id);
+                favorite.style.backgroundImage = "url('img/oksign.png')";
+            }
+        </script>
+    </body>
+</html>

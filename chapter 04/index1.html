@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>carHonk</title>
+</head>
+<body>
+    <script>
+        var mycar = {
+            brand: "Toyota",
+            color: "white",
+            speed: 0,
+
+            accelerate: function() {
+                this.speed += 5;
+                console.log(this.speed);
+            },
+
+            honking: function() {
+                console.log("honk")
+            }
+        }
+
+        console.log(mycar.color);
+        mycar.accelerate();
+        mycar.accelerate();
+        mycar.accelerate();
+        mycar.accelerate();
+        mycar.accelerate();
+        mycar.accelerate();
+        mycar.honking();
+
+    </script>
+</body>
+</html>

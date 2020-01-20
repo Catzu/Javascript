@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charsets="UTF-8">
+        <title>Shuffling Duck</title>
+        <style>
+            html {
+                margin:0 0 0 0;
+                padding:0 0 0 0;
+            }
+
+            body {
+                text-align: center;
+            }
+
+            img {
+                height: 300px;
+                width: 300px;
+                border: 0px;
+            }
+            #pics {
+                width: 900px;
+                height: 900px;
+                border: solid 1px black;
+                font-size: 0px;
+                margin: auto;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Ducks</h1>
+        <div id="pics">
+            <img src="img/duck1.png">
+            <img src="img/duck2.png">
+            <img src="img/duck3.png">
+            <img src="img/duck4.png">
+            <img src="img/duck5.png">
+            <img src="img/duck6.png">
+            <img src="img/duck7.png">
+            <img src="img/duck8.png">
+            <img src="img/duck9.png">
+        </div>
+        <script>
+            var img = document.getElementsByTagName("img");
+            var random = 0;
+            var randomNumbers = [];
+            while (randomNumbers.length < 9) {
+                random = Math.floor(Math.random() * 9) + 1;
+                if(randomNumbers.lastIndexOf(random) === -1) {
+                    randomNumbers.push(random);
+                }
+            }
+            random = 0;
+            for (var img1 in img) {
+                img[img1].src = "img/duck" + randomNumbers[random] + ".png";
+                random++;
+            }
+        </script>
+    </body>
+</html>
