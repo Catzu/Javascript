@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>helpme</title>
+        <style>
+            body {
+                text-align: center;
+            }
+            div.aappicture {
+                height: 450px;
+                width: 300px;
+                float: left;
+                background-color: red;
+                border: solid 0.5px black;
+                box-sizing: border-box;
+            }
+            #pics {
+                width: 900px;
+                height: 1350px;
+                border: solid 1px black;
+                font-size:0px;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>monkeychooser</h1>
+        <h3>choose yer favorite monkey!</h3>
+        <div id="pics"></div>
+        <script>
+            pics=document.getElementById("pics");
+            createPicsHolders();
+
+            function createPicsHolders() {
+                for(var i = 0; i < 9; i++) {
+                    pictureHolder = document.createElement("div");
+                    pictureHolder.className = "aappicture";
+                    pictureHolder.id = "picture-holder-" + i;
+                    pics.appendChild(pictureHolder);
+                }
+            }
+        </script>
+    </body>
+</html>

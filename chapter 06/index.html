@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Memory Game</title>
+        <style>
+
+            /* (Global CSS) */
+            
+            body {
+                margin: 0px;
+                padding: 0px;
+                text-align: center;
+                background-color: lavender;
+            }
+            div {
+                box-sizing: border-box;
+                height: 50px;
+                width: 150px;
+            }
+
+            /* Player1, Player 2, Your Turn and Next position styling (custom CSS). */
+
+            div.CSSP1Name {
+                box-sizing: border-box;
+                padding-top: 5px;
+            }
+            div.CSSP2Name {
+                box-sizing: border-box;
+                padding-top: 5px;
+            }
+            div.CSSyourTurn {
+                box-sizing: border-box;
+                padding-top: 5px;
+            }
+            div.CSSNext {
+                box-sizing: border-box;
+                padding-top: 5px;
+            }
+
+            /* Pictures (custom CSS). */
+
+            #pics {
+                width: 1260px;
+                height: 630px;
+                font-size: 0px;
+            }
+
+            div.duckpicture {
+                margin-bottom: 5px;
+                margin: 5px;
+                width: 200px;
+                height: 200px;
+                float: left;
+                background-color: rgb(223, 113, 150);
+                border: solid 0.5px black;
+                box-sizing: border-box;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="CSSP1Name" id="jsName1">NameError</div>
+        <div class="CSSP2Name" id="jsName2">NameError</div>
+        <div class="CSSyourTurn" id="jsYourTurn">YourTurnError</div>
+        <div class="CSSNext" id="jsNextButton">NextError</div>
+        <div id="pics"></div>
+        
+        <script>
+
+            /* Part 1 Start || Button positions for the Memory game. */
+            
+            /* Name of player 1 */
+            var a = document.getElementById("jsName1");
+            a.style.backgroundColor = "purple";
+            a.style.position = "absolute";
+            a.style.left = 10 + 'px';
+            a.style.top = 10 + 'px';
+            a.style.fontSize = "xx-large";
+            a.innerHTML = "Player 1";
+
+            /* Name of player 2 */
+            var b = document.getElementById("jsName2");
+            b.style.backgroundColor = "purple";
+            b.style.position = "absolute";
+            b.style.left = 1500 + 'px';
+            b.style.top = 10 + 'px';
+            b.style.fontSize = "xx-large";
+            b.innerHTML = "Player 2";
+
+            /* Your turn indicator */
+            var c = document.getElementById("jsYourTurn");
+            c.style.backgroundColor = "purple";
+            c.style.position = "absolute";
+            c.style.left = 745 + 'px';
+            c.style.top = 10 + 'px';
+            c.style.fontSize = "xx-large";
+            c.innerHTML = "Your Turn";
+
+            /* Next button */
+            var d = document.getElementById("jsNextButton");
+            d.style.backgroundColor = "purple";
+            d.style.position = "absolute";
+            d.style.left = 745 + 'px';
+            d.style.top = 900 + 'px';
+            d.style.fontSize = "xx-large";
+            d.innerHTML = "Next";
+
+            /* Part 1 End || Button positions for the Memory game. */
+
+
+
+            /* Part 2 Start || Adding nine pictures times two. */
+
+            /* position of the picture arrays */
+            var e = document.getElementById("pics");
+            /* e.style.backgroundColor = "purple"; */
+            e.style.position = "absolute";
+            e.style.left = 195 + 'px';
+            e.style.top = 200 + 'px';
+
+            /* changing the java id 'pics' to into javascript and announcing 'createPicsHolders' to be used. */
+            pics = document.getElementById ("pics");
+            createPicsHolders();
+
+            /* Loop that loops the pictures to 18 and puts them pictures in HTML. */
+            function createPicsHolders() {
+                for(var i = 0; i < 18; i++) {
+                    pictureHolder = document.createElement("div");
+                    pictureHolder.className = "duckpicture";
+                    pictureHolder.id = "picture-holder-" + i;
+                    pics.appendChild(pictureHolder);
+                }
+            }
+
+            /* probeer morgen naar Joey te gaan voor de loop x2 */
+
+            /* Part 2 End || Adding nine pictures times two. */
+
+        </script>
+    </body>
+</html>
