@@ -24,18 +24,22 @@
             div.CSSP1Name {
                 box-sizing: border-box;
                 padding-top: 5px;
+                border: solid 0.5px black;
             }
             div.CSSP2Name {
                 box-sizing: border-box;
                 padding-top: 5px;
+                border: solid 0.5px black;
             }
             div.CSSyourTurn {
                 box-sizing: border-box;
                 padding-top: 5px;
+                border: solid 0.5px black;
             }
             div.CSSNext {
                 box-sizing: border-box;
                 padding-top: 5px;
+                border: solid 0.5px black;
             }
 
             /* Pictures (custom CSS). */
@@ -46,15 +50,34 @@
                 font-size: 0px;
             }
 
-            div.duckpicture {
+            div.holdingpics {
                 margin-bottom: 5px;
                 margin: 5px;
                 width: 200px;
                 height: 200px;
                 float: left;
                 background-color: rgb(223, 113, 150);
-                border: solid 0.5px black;
                 box-sizing: border-box;
+            }
+
+            /* Score (custom CSS) */
+
+            .CSSscore {
+                width: 50px;
+                height: 50px;
+                background-color: rgb(114, 30, 58);
+                padding-top: 5px;
+                border: solid 0.5px black;
+            }
+
+            /* Player turn switcher (custom CSS) */
+
+            .CSSTurn {
+                width: 150px;
+                height: 50px;
+                background-color: rgb(114, 30, 58);
+                padding-top: 5px;
+                border: solid 0.5px black;
             }
 
         </style>
@@ -65,17 +88,21 @@
         <div class="CSSyourTurn" id="jsYourTurn">YourTurnError</div>
         <div class="CSSNext" id="jsNextButton">NextError</div>
         <div id="pics"></div>
+        <div class="CSSscore" id="score1">0</div>
+        <div class="CSSscore" id="score2">0</div>
+        <div class="CSSTurn" id="turnSwitcher">PlayerError</div>
+        <div class="slidepic" id="slideholder"></div>
         
         <script>
 
-            /* Part 1 Start || Button positions for the Memory game. */
+            /* Part 1 Start || Name positions for the Memory game. */
             
             /* Name of player 1 */
             var a = document.getElementById("jsName1");
             a.style.backgroundColor = "purple";
             a.style.position = "absolute";
-            a.style.left = 10 + 'px';
-            a.style.top = 10 + 'px';
+            a.style.left = 200 + 'px';
+            a.style.top = 130 + 'px';
             a.style.fontSize = "xx-large";
             a.innerHTML = "Player 1";
 
@@ -83,30 +110,21 @@
             var b = document.getElementById("jsName2");
             b.style.backgroundColor = "purple";
             b.style.position = "absolute";
-            b.style.left = 1500 + 'px';
-            b.style.top = 10 + 'px';
+            b.style.left = 1250 + 'px';
+            b.style.top = 130 + 'px';
             b.style.fontSize = "xx-large";
             b.innerHTML = "Player 2";
-
-            /* Your turn indicator */
-            var c = document.getElementById("jsYourTurn");
-            c.style.backgroundColor = "purple";
-            c.style.position = "absolute";
-            c.style.left = 745 + 'px';
-            c.style.top = 10 + 'px';
-            c.style.fontSize = "xx-large";
-            c.innerHTML = "Your Turn";
 
             /* Next button */
             var d = document.getElementById("jsNextButton");
             d.style.backgroundColor = "purple";
             d.style.position = "absolute";
             d.style.left = 745 + 'px';
-            d.style.top = 900 + 'px';
+            d.style.top = 850 + 'px';
             d.style.fontSize = "xx-large";
             d.innerHTML = "Next";
 
-            /* Part 1 End || Button positions for the Memory game. */
+            /* Part 1 End || Name positions for the Memory game. */
 
 
 
@@ -114,29 +132,88 @@
 
             /* position of the picture arrays */
             var e = document.getElementById("pics");
-            /* e.style.backgroundColor = "purple"; */
             e.style.position = "absolute";
             e.style.left = 195 + 'px';
             e.style.top = 200 + 'px';
 
             /* changing the java id 'pics' to into javascript and announcing 'createPicsHolders' to be used. */
             pics = document.getElementById ("pics");
-            createPicsHolders();
+            picHolders();
+            picAdder();
 
-            /* Loop that loops the pictures to 18 and puts them pictures in HTML. */
-            function createPicsHolders() {
+            /*  loops picture place holders into html. */
+            function picHolders() {
                 for(var i = 0; i < 18; i++) {
                     pictureHolder = document.createElement("div");
-                    pictureHolder.className = "duckpicture";
-                    pictureHolder.id = "picture-holder-" + i;
+                    pictureHolder.className = "holdingpics";
+                    pictureHolder.id = "" + ( i + 1);
                     pics.appendChild(pictureHolder);
                 }
             }
 
-            /* probeer morgen naar Joey te gaan voor de loop x2 */
+            /* this loop puts pictures in HTML picHolders.  */
+            function picAdder() {
+                pictureHolder = document.getElementsByClassName("holdingpics");
+                for(var i = 0; i < pictureHolder.length; i++) {
+                    duckimage = document.createElement("img");
+                    duckimage.src = "img/duck" + (i + 1) + ".png";
+                    pictureHolder[i].appendChild(duckimage);
+                    duckimage.width = 200;
+                    duckimage.height = 200;
+                }
+            }
 
             /* Part 2 End || Adding nine pictures times two. */
 
+
+            
+            /* Part 3 start || Score system + score system behind name. */
+
+            var f = document.getElementById("score1");
+            f.style.position = "absolute";
+            f.style.left = 350 + 'px';
+            f.style.top = 130 + 'px';
+            f.style.fontSize = "xx-large";
+
+            var g = document.getElementById("score2");
+            g.style.position = "absolute";
+            g.style.left = 1400 + 'px';
+            g.style.top = 130 + 'px';
+            g.style.fontSize = "xx-large";
+
+            /* Part 3 end || Score system + score system behind name. */
+
+
+
+            /* part 4 start || Your Turn + Player "1" or "2". */
+
+            /* Your turn indicator */
+            var c = document.getElementById("jsYourTurn");
+            c.style.backgroundColor = "purple";
+            c.style.position = "absolute";
+            c.style.left = 675 + 'px';
+            c.style.top = 130 + 'px';
+            c.style.fontSize = "xx-large";
+            c.innerHTML = "Your Turn";
+
+            var h = document.getElementById("turnSwitcher");
+            h.style.position = "absolute";
+            h.style.left = 825 + 'px';
+            h.style.top = 130 + 'px';
+            h.style.fontSize = "xx-large";
+            h.innerHTML = "Player 1";
+            h.innerHTML = "Player 2";
+
+            /* part 4 end || Your Turn + Player "1" or "2". */
+
+
+
+            /* part 5 start ||  */
+
+
+
+            /* part 5 end ||  */
+            
         </script>
     </body>
 </html>
